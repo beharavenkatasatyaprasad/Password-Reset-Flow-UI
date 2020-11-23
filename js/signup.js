@@ -1,8 +1,8 @@
 const form = document.getElementById('signup-form');
-const signupbtn = document.getElementById('signupbtn');
+const submitbtn = document.getElementById('submitbtn');
 
 function signup(){
-    signupbtn.innerHTML='Loading...'
+    submitbtn.innerHTML='Loading...'
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     const confirmpassword = document.getElementById('ConfirmPassword').value
@@ -13,13 +13,12 @@ function signup(){
         custom_alert('warning',"Confirm Password must match Password ...")
     }
     else{
-        CreateUserInDb()
-        async function CreateUserInDb() {
+        checkifEmailExists()
+        async function checkifEmailExists() {
            let data = {
-                email: email,
-                password: password
+                email: email
             }
-            let datares = await fetch('http://localhost:3500/register', {
+            let datares = await fetch('http://localhost:3000/findPossibleDuplications', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -27,15 +26,32 @@ function signup(){
                 }
                 
             });
-            if (datares.status === 201) {
-                custom_alert("success", "User Registered Successfully...");
+            if (datares.status === 202){
+                registerUser()
+                async function registerUser() {
+                    let data = {
+                         email: email,
+                         password : password
+                     }
+                     let datares = await fetch('http://localhost:3000/register', {
+                         method: 'POST',
+                         body: JSON.stringify(data),
+                         headers: {
+                             'Content-Type': 'application/json'
+                         }
+                         
+                     });
+                     if (datares.status === 200){
+                        custom_alert("success", "User registration successful...");
+                     }
+                   }
                 }
               else{
-                  custom_alert("danger", "Something went Wrong...");
+                  custom_alert("warning", "Email Already exists...");
                 }
              }
         
     }
-    signupbtn.innerHTML='Login'
+    submitbtn.innerHTML='Login'
 }
 
