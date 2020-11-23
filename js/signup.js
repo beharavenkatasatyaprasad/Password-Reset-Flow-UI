@@ -2,6 +2,7 @@ const form = document.getElementById('signup-form');
 const signupbtn = document.getElementById('signupbtn');
 
 function signup(){
+    signupbtn.innerHTML='Loading...'
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     const confirmpassword = document.getElementById('ConfirmPassword').value
@@ -12,46 +13,28 @@ function signup(){
         custom_alert('warning',"Confirm Password must match Password ...")
     }
     else{
-        signupbtn.innerHTML='Loading...'
-        checkuser()
-        let duplicateusers
-        async function checkuser() {
-            let data = {
-                 email: email
-             }
-             const datares = await fetch('http://localhost:3500/usercheck', {
-                 method: 'POST',
-                 body: JSON.stringify(data),
-                 headers: {
-                     'Content-Type': 'application/json'
-                 }
-                }sairam@gmail.com);
-                console.log(datares)
+        CreateUserInDb()
+        async function CreateUserInDb() {
+           let data = {
+                email: email,
+                password: password
             }
-        if(duplicateusers === 'user exists'){
-            custom_alert("Warning", "Email already exists..");
-        }
-        else if(duplicateusers === "user doesn't exist"){
-            CreateUserInDb()
-            async function CreateUserInDb() {
-                let data = {
-                     email: email,
-                     password: password
-                 }
-                 const datares = await fetch('http://localhost:3500/register', {
-                     method: 'POST',
-                     body: JSON.stringify(data),
-                     headers: {
-                         'Content-Type': 'application/json'
-                     }
-                     
-                 });
-                 custom_alert("success", "User registration successful..");  
+            let datares = await fetch('http://localhost:3500/register', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                
+            });
+            if (datares.status === 201) {
+                custom_alert("success", "User Registered Successfully...");
+                }
+              else{
+                  custom_alert("danger", "Something went Wrong...");
+                }
              }
-        }
-        else{
-            custom_alert("danger", "Something is fishy..");
-        }
+        
     }
     signupbtn.innerHTML='Login'
 }
