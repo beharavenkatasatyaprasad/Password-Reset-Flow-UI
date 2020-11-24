@@ -4,7 +4,7 @@
 
 # [Password-Reset-Flow-UI](https://password-reset-flow-ui.netlify.app/)
 
-*A demo web application for User authentication and Password reset flow.
+*A demo web application for User authentication and Password reset flow.*
 
 ### [Live](https://password-reset-flow-ui.netlify.app/)
 
