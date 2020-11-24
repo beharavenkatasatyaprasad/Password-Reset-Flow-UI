@@ -1,15 +1,13 @@
 const form = document.getElementById('signup-form');
-const submitbtn = document.getElementById('submitbtn');
 
 function signup() {
-    submitbtn.innerHTML = 'Loading...'
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     const confirmpassword = document.getElementById('ConfirmPassword').value
     if (!email || !password || !confirmpassword) {
         custom_alert('warning', 'Please Fill all the Fields...')
     } else if (password !== confirmpassword) {
-        custom_alert('warning', "Confirm Password must match Password ...")
+        custom_alert('warning', "'Confirm Password' field must match 'Password' field ...")
     } else {
         checkifEmailExists()
         async function checkifEmailExists() {
@@ -50,5 +48,4 @@ function signup() {
         }
 
     }
-    submitbtn.innerHTML = 'signup'
 }

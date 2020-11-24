@@ -2,14 +2,11 @@ const form = document.getElementById('login-form');
 
 
 function login() {
-    const loginbtn = document.getElementById('loginbtn');
-    loginbtn.innerHTML = ''
-    loginbtn.innerHTML = 'Loading.....'
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     if (!email || !password) {
         custom_alert('warning', 'Please Fill all the Fields...')
-    } else {
+    }else{
         CheckCredentials()
         async function CheckCredentials() {
             let data = {
@@ -26,7 +23,7 @@ function login() {
             if (datares.status === 202) {
                 let res = await datares.json()
                 custom_alert("success", "Logging in...");
-                window.localStorage.setItem("user_token", res.token);                
+                window.localStorage.setItem("user_token", res.token);
                 window.location.href = `./home.html`;
                 form.reset()
             } else if (datares.status === 400) {
@@ -35,7 +32,5 @@ function login() {
                 custom_alert("danger", "Incorrect Password...");
             }
         }
-
     }
-    loginbtn.innerHTML = 'Login'
 }
