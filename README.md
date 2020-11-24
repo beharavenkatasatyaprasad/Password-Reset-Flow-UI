@@ -8,7 +8,7 @@
 
 ### [Live](https://password-reset-flow-ui.netlify.app/)
 
-#### Technologies/Tools Included for Development:
+#### Technologies Included for Development:
 
 <code><img height="25" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" alt="html5"></code>
 <code><img height="25" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" alt="css3"></code>
