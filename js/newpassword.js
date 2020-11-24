@@ -19,7 +19,7 @@ function resetpassword() {
                 token: token,
                 password: password
             }
-            let datares = await fetch('http://localhost:3000/verification', {
+            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/verification', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -38,10 +38,6 @@ function resetpassword() {
             if (datares.status == 500) {
                 submitbtn.innerHTML = 'Send Verification'
                 custom_alert("warning", "Invalid OTP..");
-                submitbtn.innerHTML = 'Try Again'
-            } else {
-                submitbtn.innerHTML = 'Send Verification'
-                custom_alert("danger", "Something went wrong..");
                 submitbtn.innerHTML = 'Try Again'
             }
 

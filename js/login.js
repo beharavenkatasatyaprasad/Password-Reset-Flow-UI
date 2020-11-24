@@ -6,14 +6,14 @@ function login() {
     const password = document.getElementById('Password').value;
     if (!email || !password) {
         custom_alert('warning', 'Please Fill all the Fields...')
-    }else{
+    } else {
         CheckCredentials()
         async function CheckCredentials() {
             let data = {
                 email: email,
                 password: password
             }
-            let datares = await fetch('http://localhost:3000/login', {
+            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/login', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {

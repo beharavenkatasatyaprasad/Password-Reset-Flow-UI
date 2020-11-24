@@ -14,7 +14,7 @@ function signup() {
             let data = {
                 email: email
             }
-            let datares = await fetch('http://localhost:3000/findPossibleDuplications', {
+            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/findPossibleDuplications', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -29,7 +29,7 @@ function signup() {
                         email: email,
                         password: password
                     }
-                    let datares = await fetch('http://localhost:3000/register', {
+                    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/register', {
                         method: 'POST',
                         body: JSON.stringify(data),
                         headers: {
