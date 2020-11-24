@@ -1,14 +1,14 @@
-<a href="https://resto-finder-webapp.netlify.app/">
+<a href="https://password-reset-flow-ui.netlify.app/">
     <img src="imgs/img.png" alt=""  align="right" height="60">
 </a>
 
 # [Password-Reset-Flow-UI](https://password-reset-flow-ui.netlify.app/)
 
-*A demo web application for User authentication and Password reset flow.*
+*A demo web application for User authentication and Password reset flow integrated by [Password-Reset-Flow-Server](https://github.com/beharavenkatasatyaprasad/password-reset-flow-server/).*
 
 ### [Live](https://password-reset-flow-ui.netlify.app/)
 
-#### Technologies Included for Development:
+#### Languages and Tools:
 
 <code><img height="25" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" alt="html5"></code>
 <code><img height="25" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" alt="css3"></code>
