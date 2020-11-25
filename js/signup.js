@@ -46,6 +46,7 @@ function signup() {
                         submitbtn.innerHTML = 'Signup Successful'
                         setTimeout(() => {
                             form.reset()
+                            window.location.href = "./index.html"              
                         }, 3000);
                     }
                 }

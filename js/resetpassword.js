@@ -26,7 +26,7 @@ function resetPassword() {
                 submitbtn.innerHTML ='Check your email..'
                 submitbtn.disabled = true
                 setTimeout(() => {
-                    window.location.href = "./newpassword.html"
+                    window.location.href = "./index.html"
                 }, 4500);
             }
             if(datares.status == 400){
