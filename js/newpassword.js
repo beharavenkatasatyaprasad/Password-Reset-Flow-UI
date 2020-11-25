@@ -13,8 +13,8 @@ function resetpassword() {
         custom_alert('warning', "'Confirm Password' field must match 'Password' field ...")
         submitbtn.innerHTML = 'Reset Password'
     } else {
-        CheckOTP()
-        async function CheckOTP() {
+        UpdatePassword()
+        async function UpdatePassword() {
             let data = {
                 email: email,
                 password: password
@@ -36,8 +36,7 @@ function resetpassword() {
 
             }
             if (datares.status == 500) {
-                submitbtn.innerHTML = 'Send Verification'
-                custom_alert("warning", "Unauthorized request..");
+                custom_alert("danger", "Unauthorized request..");
                 submitbtn.innerHTML = 'Try Again'
                 setTimeout(() => {
                     window.location.href = "./index.html"
