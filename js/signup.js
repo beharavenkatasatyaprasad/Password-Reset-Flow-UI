@@ -44,6 +44,9 @@ function signup() {
                     if (datares.status === 200) {
                         custom_alert("success", "User registration successful...");
                         submitbtn.innerHTML = 'Signup Successful'
+                        setTimeout(() => {
+                            form.reset()
+                        }, 3000);
                     }
                 }
             } else {
