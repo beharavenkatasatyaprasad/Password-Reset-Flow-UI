@@ -1,12 +1,12 @@
 const form = document.getElementById('reset-newpassword');
 
 function resetpassword() {
-    const token = document.getElementById('token').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     const ConfirmPassword = document.getElementById('ConfirmPassword').value;
     const submitbtn = document.getElementById('resetPassBtn');
     submitbtn.innerHTML = 'Loading...'
-    if (!token || !password || !ConfirmPassword) {
+    if (!email || !password || !ConfirmPassword) {
         custom_alert('warning', 'Please fill email field...')
         submitbtn.innerHTML = 'Reset Password'
     } else if (ConfirmPassword != password) {
@@ -16,7 +16,7 @@ function resetpassword() {
         CheckOTP()
         async function CheckOTP() {
             let data = {
-                token: token,
+                email: email,
                 password: password
             }
             let datares = await fetch('https://password-reset-flow-server.herokuapp.com/verification', {
@@ -37,8 +37,11 @@ function resetpassword() {
             }
             if (datares.status == 500) {
                 submitbtn.innerHTML = 'Send Verification'
-                custom_alert("warning", "Invalid OTP..");
+                custom_alert("warning", "Unauthorized request..");
                 submitbtn.innerHTML = 'Try Again'
+                setTimeout(() => {
+                    window.location.href = "./index.html"
+                }, 4500);
             }
 
         }
