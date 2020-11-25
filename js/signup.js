@@ -1,6 +1,8 @@
 const form = document.getElementById('signup-form');
 
 function signup() {
+    const submitbtn = document.getElementById('submitbtn')
+    submitbtn.innerHTML = 'Loading...'
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     const confirmpassword = document.getElementById('ConfirmPassword').value
@@ -39,11 +41,12 @@ function signup() {
                     });
                     if (datares.status === 200) {
                         custom_alert("success", "User registration successful...");
-                        form.reset()
+                        submitbtn.innerHTML = 'Signup Successful'
                     }
                 }
             } else {
                 custom_alert("warning", "Email Already exists...");
+                submitbtn.innerHTML = 'Try Again..'
             }
         }
 
