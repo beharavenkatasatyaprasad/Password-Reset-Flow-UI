@@ -19,7 +19,7 @@ function resetpassword() {
                 email: email,
                 password: password
             }
-            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/verification', {
+            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/passwordreset', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
