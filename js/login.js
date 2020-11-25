@@ -3,6 +3,7 @@ const form = document.getElementById('login-form');
 
 function login() {
     const loginbtn = document.getElementById('loginbtn');
+    loginbtn.innerHTML="loading..."
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     if (!email || !password) {
