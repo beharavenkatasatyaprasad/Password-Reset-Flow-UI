@@ -8,8 +8,10 @@ function signup() {
     const confirmpassword = document.getElementById('ConfirmPassword').value
     if (!email || !password || !confirmpassword) {
         custom_alert('warning', 'Please Fill all the Fields...')
+        submitbtn.innerHTML = 'Try Again..'
     } else if (password !== confirmpassword) {
         custom_alert('warning', "'Confirm Password' field must match 'Password' field ...")
+        submitbtn.innerHTML = 'Try Again..'
     } else {
         checkifEmailExists()
         async function checkifEmailExists() {
