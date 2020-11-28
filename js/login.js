@@ -9,12 +9,12 @@ function login() {
         custom_alert('warning', 'Please Fill all the Fields...')
         loginbtn.innerHTML = 'Try again'
     } else {
-        CheckCredentials(email,password)
-        
+        CheckCredentials(email, password)
+
     }
 }
 
-async function CheckCredentials(email,password) {
+async function CheckCredentials(email, password) {
     let data = {
         email: email,
         password: password
@@ -27,7 +27,7 @@ async function CheckCredentials(email,password) {
         }
     });
     const res = datares.json()
-    
+
     if (res.type_ != 'success') {
         loginbtn.innerHTML = 'login successful'
         custom_alert("success", "Logging in...");
