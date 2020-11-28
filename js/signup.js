@@ -13,48 +13,30 @@ function signup() {
         custom_alert('warning', "'Confirm Password' field must match 'Password' field ...")
         submitbtn.innerHTML = 'Try Again..'
     } else {
-        checkifEmailExists()
-        async function checkifEmailExists() {
-            let data = {
-                email: email
-            }
-            let datares = await fetch('https://password-reset-flow-server.herokuapp.com/findPossibleDuplications', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+        registerUser(email,password)
+    }
+}
 
-            });
-            if (datares.status === 202) {
-                registerUser()
-                async function registerUser() {
-                    let data = {
-                        email: email,
-                        password: password
-                    }
-                    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/register', {
-                        method: 'POST',
-                        body: JSON.stringify(data),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-
-                    });
-                    if (datares.status === 200) {
-                        custom_alert("success", "User registration successful...");
-                        submitbtn.innerHTML = 'Signup Successful'
-                        setTimeout(() => {
-                            form.reset()
-                            window.location.href = "./index.html"              
-                        }, 3000);
-                    }
-                }
-            } else {
-                custom_alert("warning", "Email Already exists...");
-                submitbtn.innerHTML = 'Try Again..'
-            }
+async function registerUser(email,password) {
+    let data = {
+        email: email,
+        password: password
+    }
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/register', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
         }
 
+    });
+    const res = datares.json()
+    custom_alert(res.type_, res.message);
+    if (res.type_ == 'success') {
+        submitbtn.innerHTML = 'Signup Successful'
+        setTimeout(() => {
+            window.location.href = "./index.html"
+            form.reset()
+        }, 3000);
     }
 }

@@ -1,20 +1,29 @@
-const token = window.localStorage.getItem("user_token");
+checklogin();
 
-login();
 
-function login() {
-  if (!token) {
-    custom_alert("warning", "UnAuthorized Login!!!");
-    setTimeout(() => {
-      window.location.href = "./index.html";
-    }, 2000);
-  } else {
-    custom_alert("success", "Login Successful!");
-  }
+async function checklogin() {
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/cookie', {
+        method: 'GET',
+        redirect: 'follow'
+    });
+    const res = datares.json()
+    if (res.type_ == 'danger') {
+        custom_alert("warning", "UnAuthorized Login!!!");
+        setTimeout(() => {
+            window.location.href = "./index.html";
+        }, 2000);
+    }
 }
 
-function logout() {
-  window.localStorage.removeItem("user_token");
-  custom_alert("warning", "logging out!");
-  setTimeout(() => (window.location.href = "./index.html"), 2000);
+
+async function logout() {
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/logout', {
+        method: 'GET',
+        redirect: 'follow'
+    });
+    const res = datares.json()
+    custom_alert(res.type_,res.message);
+    setTimeout(() => {
+        window.location.href = "./index.html";
+    }, timeout);
 }

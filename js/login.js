@@ -3,12 +3,12 @@ const form = document.getElementById('login-form');
 
 function login() {
     const loginbtn = document.getElementById('loginbtn');
-    loginbtn.innerHTML="loading..."
+    loginbtn.innerHTML = "loading..."
     const email = document.getElementById('email').value;
     const password = document.getElementById('Password').value;
     if (!email || !password) {
         custom_alert('warning', 'Please Fill all the Fields...')
-        loginbtn.innerHTML='Try again'
+        loginbtn.innerHTML = 'Try again'
     } else {
         CheckCredentials()
         async function CheckCredentials() {
@@ -23,19 +23,17 @@ function login() {
                     'Content-Type': 'application/json'
                 }
             });
-            if (datares.status === 202) {
-                loginbtn.innerHTML='login successful'
-                let res = await datares.json()
+            const res = datares.json()
+            if (res.type_ != 'success') {
+                loginbtn.innerHTML = 'login successful'
                 custom_alert("success", "Logging in...");
-                window.localStorage.setItem("user_token", res.token);
-                window.location.href = `./home.html`;
+                setTimeout(() => {
+                    window.location.href = `./home.html`;
+                }, 2000);
                 form.reset()
-            } else if (datares.status === 400) {
-                loginbtn.innerHTML='Try again'
-                custom_alert("warning", "No user found...");
             } else {
-                loginbtn.innerHTML='Try again'
-                custom_alert("danger", "Incorrect Password...");
+                loginbtn.innerHTML = 'Try again'
+                custom_alert(res.type_, res.message);
             }
         }
     }
