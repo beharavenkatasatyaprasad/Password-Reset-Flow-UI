@@ -16,14 +16,14 @@ async function sendVerification(email) {
     let data = {
         email: email
     }
-    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/resetpassword', {
+    let datares = await fetch('http://localhost:3000/resetpassword', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         }
     });
-    const res = datares.json()
+    const res = await datares.json()
     custom_alert(res.type_, res.message);
     if(res.type_ == 'success'){
         submitbtn.innerHTML ='Check your Inbox..'

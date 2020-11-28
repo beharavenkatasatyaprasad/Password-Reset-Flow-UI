@@ -1,27 +1,49 @@
-checklogin();
+const token = get_cookie('jwt');
 
 
-async function checklogin() {
-    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/cookie', {
-        method: 'GET',
+function get_cookie(name) {
+    return document.cookie.split(';').some(c => {
+        return c.trim().startsWith(name + '=');
     });
-    const res = datares.json()
-    if (res.type_ == 'danger') {
+    
+}
+
+checklogin();
+function checklogin() {
+    if (!token) {
         custom_alert("warning", "UnAuthorized Login!!!");
         setTimeout(() => {
             window.location.href = "./index.html";
-        }, 2000);
+        }, 3000);
+    } else {
+        let data = {
+            token: token
+        }
+        let datares = await fetch('http://localhost:3000/checklogin', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const res = await datares.json()
+        if (res.type_ == 'success') {
+            window.localStorage.setItem('user', res.user);
+        }else{
+            custom_alert(res.type_, res.msessage);
+            setTimeout(() => {
+                window.location.href = "./index.html"
+            }, 3000);
+        }
     }
 }
 
 
-async function logout() {
-    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/logout', {
-        method: 'GET',
-    });
-    const res = datares.json()
-    custom_alert(res.type_,res.message);
+function logout() {
+    custom_alert("success", "Logging Out!!!");
+    document.cookie = 'jwt' + '=; Max-Age=0';
+    window.localStorage.removeItem('user')
     setTimeout(() => {
-        window.location.href = "./index.html";
-    }, timeout);
+        window.location.href = "./index.html"
+    }, 3000);
 }
