@@ -29,7 +29,7 @@ async function CheckCredentials(email, password) {
     });
     const res = await datares.json();
     custom_alert(res.type_, res.message);
-    if (res.type_ == 'true') {
+    if (res.type_ == 'success') {
         loginbtn.innerHTML = 'login successful...';
         setCookie('jwt', res.token, 1)
         setTimeout(() => {

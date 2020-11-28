@@ -1,40 +1,53 @@
-const token = get_cookie('jwt');
+check();
 
-
-function get_cookie(name) {
-    return document.cookie.split(';').some(c => {
-        return c.trim().startsWith(name + '=');
-    });
-    
-}
-
-checklogin();
-function checklogin() {
+function check() {
+    const token = getCookie('jwt');
     if (!token) {
         custom_alert("warning", "UnAuthorized Login!!!");
         setTimeout(() => {
             window.location.href = "./index.html";
         }, 3000);
     } else {
-        let data = {
-            token: token
+        checklogin(token);
+    }
+}
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-        let datares = await fetch('http://localhost:3000/checklogin', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const res = await datares.json()
-        if (res.type_ == 'success') {
-            window.localStorage.setItem('user', res.user);
-        }else{
-            custom_alert(res.type_, res.msessage);
-            setTimeout(() => {
-                window.location.href = "./index.html"
-            }, 3000);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
         }
+    }
+    return "";
+}
+
+async function checklogin(token) {
+    let data = {
+        token: token
+    }
+    let datares = await fetch('http://localhost:3000/checklogin', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const res = await datares.json()
+    if (res.type_ == 'success') {
+        window.localStorage.setItem('user', res.user);
+    } else {
+        custom_alert(res.type_, res.msessage);
+        setTimeout(() => {
+            window.location.href = "./index.html"
+        }, 3000);
     }
 }
 
