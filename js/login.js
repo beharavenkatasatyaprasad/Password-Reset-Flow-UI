@@ -19,7 +19,7 @@ async function CheckCredentials(email, password) {
         email: email,
         password: password
     }
-    const datares = await fetch('http://localhost:3000/login', {
+    const datares = await fetch('https://password-reset-flow-server.herokuapp.com/login', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

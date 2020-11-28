@@ -22,7 +22,7 @@ async function registerUser(email,password) {
         email: email,
         password: password
     }
-    let datares = await fetch('http://localhost:3000/register', {
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/register', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

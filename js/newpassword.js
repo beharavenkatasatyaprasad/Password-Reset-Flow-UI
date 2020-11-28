@@ -22,7 +22,7 @@ async function UpdatePassword(email,password) {
         email: email,
         password: password
     }
-    let datares = await fetch('http://localhost:3000/passwordreset', {
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/passwordreset', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

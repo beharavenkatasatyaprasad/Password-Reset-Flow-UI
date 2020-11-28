@@ -33,7 +33,7 @@ async function checklogin(token) {
     let data = {
         token: token
     }
-    let datares = await fetch('http://localhost:3000/checklogin', {
+    let datares = await fetch('https://password-reset-flow-server.herokuapp.com/checklogin', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
