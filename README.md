@@ -17,7 +17,7 @@
 <code><img height="25" src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-original.svg" alt="jquery"></code>
 
 ##### Links
- - ``Server Deployment URL: https://mentorassignment.herokuapp.com/``
+ - ``Server Deployment URL: https://password-reset-flow-server.herokuapp.com/``
  - ``Server GitHub Repo Link: https://github.com/beharavenkatasatyaprasad/password-reset-flow-server``
  
 <img  src="https://github.com/beharavenkatasatyaprasad/beharavenkatasatyaprasad/blob/main/gifs/bars.gif" alt=""/>
