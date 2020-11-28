@@ -4,7 +4,6 @@ checklogin();
 async function checklogin() {
     let datares = await fetch('https://password-reset-flow-server.herokuapp.com/cookie', {
         method: 'GET',
-        redirect: 'follow'
     });
     const res = datares.json()
     if (res.type_ == 'danger') {
@@ -19,7 +18,6 @@ async function checklogin() {
 async function logout() {
     let datares = await fetch('https://password-reset-flow-server.herokuapp.com/logout', {
         method: 'GET',
-        redirect: 'follow'
     });
     const res = datares.json()
     custom_alert(res.type_,res.message);
