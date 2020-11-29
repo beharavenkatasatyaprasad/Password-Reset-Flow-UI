@@ -28,7 +28,6 @@ async function CheckCredentials(email, password) {
         }
     });
     const res = await datares.json();
-    custom_alert(res.type_, res.message);
     if (res.type_ == 'success') {
         loginbtn.innerHTML = 'login successful...';
         setTimeout(() => {
@@ -36,6 +35,7 @@ async function CheckCredentials(email, password) {
             form.reset()
         }, 2000);
     } else {
+        custom_alert(res.type_, res.message);
         loginbtn.innerHTML = 'Try Again'
     }
 }
