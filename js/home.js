@@ -44,7 +44,7 @@ async function checklogin(token) {
     if (res.type_ == 'success') {
         window.localStorage.setItem('user', res.user);
     } else {
-        custom_alert(res.type_, res.msessage);
+        custom_alert('danger', 'unauthorized login...');
         setTimeout(() => {
             window.location.href = "./index.html"
         }, 3000);

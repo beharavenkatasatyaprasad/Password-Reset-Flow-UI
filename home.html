@@ -1,55 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
+		<title>Mentor Api</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark w-100 sticky-top">
+			<a class="navbar-brand" href="#">Mentor Allotment Portal</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="#addStudentSection"
+							>Add Student <span class="sr-only">(current)</span></a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#addMentorSection">Add Mentor</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#assignMentorSection"
+							>Assign/Update Mentor</a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#assignStudentSection">Assign Student</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">List Mentors</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row" id="addStudentSection">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+					<u> <h2 class="mt-5 pt-2">Add Student</h2></u>
+					<form id="addStudentForm">
+						<div class="form-group">
+							<label for="studentId">Id</label>
+							<input
+								type="text"
+								class="form-control"
+								id="studentId"
+								aria-describedby="studentId"
+								placeholder="Enter Student Id"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="studentName">Name</label>
+							<input
+								type="text"
+								class="form-control"
+								id="studentName"
+								aria-describedby="studentName"
+								placeholder="Enter Student Name"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="studentClass">Class</label>
+							<input
+								type="text"
+								class="form-control"
+								id="studentClass"
+								aria-describedby="studentClass"
+								placeholder="Enter Student Class"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="studentAge">Age</label>
+							<input
+								type="text"
+								class="form-control"
+								id="studentAge"
+								aria-describedby="studentAge"
+								placeholder="Enter Student Age"
+							/>
+						</div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <!-- jquery  -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- jquery  -->
-  <!-- bootstrap  -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-  <!-- bootstrap  -->
-  <!-- google font  -->
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans" rel="stylesheet">
-  <!-- google font  -->
-  <!-- css  -->
-  <link rel="stylesheet" href="css/common.css">
-  <!-- css  -->
-  <!-- font-awesome  -->
-  <script src="https://use.fontawesome.com/d8a40b24d8.js"></script>
-  <!-- font-awesome  -->
-</head>
+						<button
+							type="submit"
+							class="addStudent btn btn-dark"
+							style="width: 100%"
+						>
+							Submit
+						</button>
+						<div
+							aria-live="polite"
+							aria-atomic="true"
+							class="d-flex justify-content-center align-items-center"
+							style="min-height: 200px"
+						>
+							<div class="toast studentToast" data-autohide="false">
+								<div class="toast-header">
+									<strong class="mr-auto text-primary">Notification</strong>
+									<small class="text-muted">Now</small>
+									<button
+										type="button"
+										class="ml-2 mb-1 close"
+										data-dismiss="toast"
+									>
+										&times;
+									</button>
+								</div>
+								<div class="toast-body">New Student Added.</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<hr />
+			<div class="row" id="addMentorSection">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+					<u> <h2 class="mt-5 pt-2">Add Mentor</h2></u>
+					<form id="addMentorForm">
+						<div class="form-group">
+							<label for="mentorId">Id</label>
+							<input
+								type="text"
+								class="form-control"
+								id="mentorId"
+								aria-describedby="mentorId"
+								placeholder="Enter mentor Id"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="mentorName">Name</label>
+							<input
+								type="text"
+								class="form-control"
+								id="mentorName"
+								aria-describedby="mentorName"
+								placeholder="Enter mentor Name"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="mentorSubject">Subject</label>
+							<input
+								type="text"
+								class="form-control"
+								id="mentorSubject"
+								aria-describedby="mentorSubject"
+								placeholder="Enter mentor subject"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="mentorAge">Age</label>
+							<input
+								type="text"
+								class="form-control"
+								id="mentorAge"
+								aria-describedby="mentorAge"
+								placeholder="Enter mentor Age"
+							/>
+						</div>
 
-<body>
-  <div id="message"></div>
-  <nav class="navbar shadow navbar-expand-md m-0 py-2" style="background-color: rgb(255, 255, 255);">
-    <a class="navbar-brand p-0 m-0" href=""><img src="imgs/logo.jpg" height="35" alt=""></a>
-    <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse"
-      data-target="#collapsibleNavbar">
-      <i class="fa fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-      <ul class="navbar-nav text-center">
-        <li class="nav-item">
-          <button type="button" id="Logout" onclick="logout()"
-            class="nav-buttons btn btn-md btn-block">Logout</button>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container-fluid">
-    <div class="col-lg-6 col-sm-12 create-fields" style="margin: auto; margin-top: 7%;">
-      <h1 class="text-center">Welcome to home page</h1>
-    </div>
-  </div>
-  <!-- scripts -->
-  <script src="js/common.js"></script>
-  <script src="js/home.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <!-- scripts -->
-</body>
+						<button
+							type="submit"
+							class="addMentor btn btn-dark"
+							style="width: 100%"
+						>
+							Submit
+						</button>
+						<div
+							aria-live="polite"
+							aria-atomic="true"
+							class="d-flex justify-content-center align-items-center"
+							style="min-height: 200px"
+						>
+							<div class="toast mentorToast" data-autohide="false">
+								<div class="toast-header">
+									<strong class="mr-auto text-primary">Notification</strong>
+									<small class="text-muted">Now</small>
+									<button
+										type="button"
+										class="ml-2 mb-1 close"
+										data-dismiss="toast"
+									>
+										&times;
+									</button>
+								</div>
+								<div class="toast-body">New Mentor Added.</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<hr />
+			<div class="row" id="assignMentorSection">
+				<div class="col-lg-12">
+					<u><h1 class="mt-5 pt-2">Student Details</h1></u>
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Class</th>
+								<th>Age</th>
+								<th>Mentor</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="assignMentortbody"></tbody>
+						<!-- Modal -->
+					</table>
+				</div>
+			</div>
+			<hr />
 
+			<div class="row" id="assignStudentSection">
+				<div class="col-lg-12">
+					<u><h1 class="mt-6 pt-5">Mentor Details</h1></u>
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Subject</th>
+								<th>Age</th>
+								<th>Assigned Students</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="assignStudentbody"></tbody>
+						<!-- Modal -->
+					</table>
+				</div>
+			</div>
+			<hr />
+		</div>
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="index.js"></script>
+	</body>
 </html>
