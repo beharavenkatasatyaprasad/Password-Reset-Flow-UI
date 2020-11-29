@@ -1,4 +1,4 @@
-// checklogin();
+checklogin();
 
 // function check() {
 //     const token = getCookie('jwt');
