@@ -44,7 +44,11 @@ async function checklogin(token) {
     });
     const res = await datares.json()
     if (res.type_ == 'success') {
-        document.getElementById('username').innerHTML= "Welcome " + res.user.split('@')[0]
+        document.getElementById('userwelcome').innerHTML=(`
+        <div class="col-lg-6 fade-in col-sm-12 create-fields" style="margin: auto; margin-top: 7%;">
+            <h1 id="username" class="text-center">Welcome &nbsp; ${res.user.split('@')[0]}</h1>
+        </div>
+        `)
         window.localStorage.setItem('user', res.user);
     } else {
         custom_alert('danger', 'unauthorized login !!!');
