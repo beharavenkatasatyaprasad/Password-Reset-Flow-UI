@@ -44,6 +44,7 @@ async function checklogin(token) {
     });
     const res = await datares.json()
     if (res.type_ == 'success') {
+        document.getElementById('username').innerHTML= res.user
         window.localStorage.setItem('user', res.user);
     } else {
         custom_alert('danger', 'unauthorized login !!!');
