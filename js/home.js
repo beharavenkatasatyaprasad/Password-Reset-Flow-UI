@@ -8,6 +8,7 @@ async function checklogin() {
         }
     });
     const res = await response.json()
+    console.log(res)
     custom_alert(res.type_ , res.message);
     if (res.type_ != 'success') {
         setTimeout(() => {
