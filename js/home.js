@@ -46,7 +46,7 @@ async function checklogin(token) {
     if (res.type_ == 'success') {
         document.getElementById('userwelcome').innerHTML=(`
         <div class="col-lg-6 fade-in col-sm-12 create-fields" style="margin: auto; margin-top: 7%;">
-            <h1 id="username" class="text-center">Welcome &nbsp; ${res.user.split('@')[0]}</h1>
+            <h1 id="username" class="text-center">Welcome ${res.user.split('@')[0]}</h1>
         </div>
         `)
         window.localStorage.setItem('user', res.user);
