@@ -37,5 +37,7 @@ async function registerUser(email,password) {
             window.location.href = "./index.html"
             form.reset()
         }, 3000);
+    }else{
+        submitbtn.innerHTML = 'Try Again..'
     }
 }
