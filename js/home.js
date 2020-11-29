@@ -4,6 +4,8 @@ function check() {
     const token = getCookie('jwt');
     if (!token) {
         custom_alert("warning", "UnAuthorized Login!!!");
+        document.cookie = 'jwt' + '=; Max-Age=0';
+        window.localStorage.removeItem('user')
         setTimeout(() => {
             window.location.href = "./index.html";
         }, 3000);
