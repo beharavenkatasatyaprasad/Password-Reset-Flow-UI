@@ -28,24 +28,25 @@ async function CheckCredentials(email, password) {
         }
     });
     const res = await datares.json();
+    custom_alert(res.type_, res.message);
     if (res.type_ == 'success') {
         loginbtn.innerHTML = 'login successful...';
+        setCookie('jwt', res.token, 1)
         setTimeout(() => {
             window.location.href = `./home.html`;
             form.reset()
         }, 2000);
     } else {
-        custom_alert(res.type_, res.message);
         loginbtn.innerHTML = 'Try Again'
     }
 }
 
-// function setCookie(name, value, days) {
-//     var expires = "";
-//     if (days) {
-//         var date = new Date();
-//         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-//         expires = "; expires=" + date.toUTCString();
-//     }
-//     document.cookie = name + "=" + (value || "") + expires + "; path=/";
-// }
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
