@@ -11,17 +11,15 @@ async function checklogin() {
     const res = await response.json()
     console.log(res)
     custom_alert(res.type_ , res.message);
+    document.getElementById('userwelcome').innerHTML=(`
+    <div class="col-lg-6 fade-in col-sm-12 create-fields" style="margin: auto; margin-top: 7%;">
+        <h1 id="username" class="text-center">Welcome ${res.user.split('@')[0]}</h1>
+    </div>
+    `)
     if (res.type_ != 'success') {
         setTimeout(() => {
             window.location.href = "./index.html"
         }, 3000);
-    } else {
-        document.getElementById('userwelcome').innerHTML=(`
-        <div class="col-lg-6 fade-in col-sm-12 create-fields" style="margin: auto; margin-top: 7%;">
-            <h1 id="username" class="text-center">Welcome ${res.user.split('@')[0]}</h1>
-        </div>
-        `)
-        window.localStorage.setItem('user', res.user);
     }
 }
 
@@ -29,7 +27,7 @@ async function checklogin() {
 async function logout() {
     let response = await fetch('https://password-reset-flow-server.herokuapp.com/logout', {
         method: 'GET',
-        credentials: 'include',
+        credentials: 'include'
         headers: {
             'Content-Type': 'application/json'
         }
