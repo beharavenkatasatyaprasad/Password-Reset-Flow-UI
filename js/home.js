@@ -29,6 +29,7 @@ async function checklogin() {
 async function logout() {
     let response = await fetch('https://password-reset-flow-server.herokuapp.com/logout', {
         method: 'GET',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         }
