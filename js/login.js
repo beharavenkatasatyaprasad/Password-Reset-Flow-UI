@@ -21,6 +21,7 @@ async function CheckCredentials(email, password) {
     }
     const datares = await fetch('https://password-reset-flow-server.herokuapp.com/login', {
         method: 'POST',
+        credentials: "include",
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
