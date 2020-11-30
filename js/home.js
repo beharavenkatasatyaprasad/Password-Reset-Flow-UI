@@ -3,6 +3,7 @@ checklogin();
 async function checklogin() {
     let response = await fetch('https://password-reset-flow-server.herokuapp.com/checklogin', {
         method: 'GET',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         }
